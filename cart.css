@@ -1,0 +1,186 @@
+@media (min-width: 1025px) {
+    .h-custom {
+        height: 100vh !important;
+    }
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+.bg-grey {
+    background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+@media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+}
+
+
+
+footer .footer_content .footer_item h3 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.footer_content .footer_item a {
+    text-decoration: none;
+    color: #707070;
+    transition: all 0.5s;
+}
+
+.footer_content .footer_item a:hover {
+    color: #FB811E;
+    transition: all 0.5s;
+}
+
+#w3lay {
+    color: #009F4D;
+    transition: all 0.5s;
+}
+
+#w3lay:hover {
+    color: #FB811E;
+    transition: all 0.5s;
+}
+
+.footer_item .footer_logo {
+    display: inline-block;
+    color: #FB811E;
+    position: absolute;
+    width: 430px;
+}
+
+.footer_item .footer_logo .logo {
+    position: relative;
+    top: -20px;
+    left: -123px;
+    transition: all 0.5s;
+}
+
+.footer_item .footer_logo a {
+    font-size: 32px;
+    color: #FB811E;
+    font-weight: 400;
+}
+
+footer .footer_content .footer_item .footer_logo i {
+    color: #FB811E;
+    background: none;
+}
+
+footer .footer_content .footer_item .footer_logo:hover i {
+    color: black;
+}
+
+footer .footer_content .footer_item .footer_logo:hover a {
+    color: black;
+}
+
+.dark .footer_content .footer_item .footer_logo:hover a {
+    color: white;
+    transition: all 0.5s;
+}
+
+.dark .footer_content .footer_item .footer_logo:hover i {
+    color: white;
+    transition: all 0.5s;
+}
+
+.footer_item .footer_text {
+    position: relative;
+    top: 54px;
+}
+
+.footer_content .footer_item p {
+    color: #959292;
+}
+
+.footer_content .footer_item form {
+    display: flex;
+    width: 100%;
+    /* border-radius: 10px; */
+}
+
+.footer_content .footer_item form input {
+    padding: 10px 20px;
+    border-radius: 30px 0 0 30px;
+    width: 80%;
+    border: 1px solid #F4F4F4;
+    background-color: #F4F4F4;
+    outline: none;
+}
+
+.footer_content .footer_item form button {
+    width: 20%;
+    padding: 10px 20px;
+    border-radius: 0 30px 30px 0;
+    color: white;
+    background-color: #009F4D;
+    border: none;
+    transition: all 0.5s;
+}
+
+.footer_content .footer_item form button i {
+    color: white;
+}
+
+.footer_content .footer_item button:hover {
+    background-color: #33B271;
+    transition: all 0.5s;
+}
+
+.footer_content .footer_item ul {
+    list-style: none;
+}
+
+.footer_content .footer_item ul li {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.footer_content .footer_item ul li a {
+    justify-content: center;
+
+}
+
+.footer_content .footer_item i {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+    text-align: center;
+    color: #009F4D;
+    background: rgb(10 191 83 / 8%);
+    border-radius: 50px;
+    transition: all 0.5s;
+}
+
+.footer_content .footer_item li:hover i {
+    color: #FB811E;
+    background: rgb(255 201 69 / 19%);
+    box-shadow: 0px 4px 7px 0px rgb(10 10 10 / 24%);
+    transition: all 0.5s;
+}
+
+footer .footer_text p {
+    color: #959292;
+}
