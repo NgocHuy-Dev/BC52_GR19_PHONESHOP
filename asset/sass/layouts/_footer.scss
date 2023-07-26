@@ -1,0 +1,10 @@
+#footer {
+    background-color: $color-navy;
+    h3 {
+        @include styleText($color-while,$fs-3,$fw-2);
+        padding-top: 20px;
+    }
+    p {
+        @include styleText($color-while,$fs-2,$fw-1)
+    }
+}

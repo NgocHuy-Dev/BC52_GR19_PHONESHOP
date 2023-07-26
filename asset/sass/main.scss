@@ -2,15 +2,16 @@
 // Import Google Font
 @import "https://fonts.googleapis.com/css?family=Montserrat&display=swap";
 
-// Helper
+// helper
 @import "./helper/variables";
-// Mixin
+// mixin
 @import "./helper/mixin";
 
 // base
 @import "./base/reset";
 
-// components
+//components
 @import "./components/cart";
-
-// Header
+// layouts
+@import "./layouts/header";
+@import "./layouts/footer";

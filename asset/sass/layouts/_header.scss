@@ -1,0 +1,24 @@
+#header {
+    background-color: $color-navy;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    .navbar-brand {
+        @include styleText($color-while, $fs-3, $fw-3);
+    }
+    .nav-link {
+        @include styleText($color-while, $fs-2, $fw-3);
+        padding: 25px;
+    }
+    .nav-cart {
+        padding: 15px 20px;
+        margin-top: 10px;
+        background-color: $color-peach;
+        .cart-icon {
+            color: $color-navy;
+        }
+    }
+    
+}
+
+
