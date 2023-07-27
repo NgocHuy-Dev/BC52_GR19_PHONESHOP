@@ -61,4 +61,15 @@
   color: #fff;
   font-size: 1.1rem;
   font-weight: 400;
+}
+
+.product {
+  position: relative;
+  top: 100px;
+  padding-bottom: 100px;
+}
+.product .card .card-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */

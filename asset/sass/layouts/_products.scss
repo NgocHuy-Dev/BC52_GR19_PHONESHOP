@@ -1,0 +1,12 @@
+.product {
+    position: relative;
+    top: 100px;
+    padding-bottom: 100px;
+    .card {
+        .card-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+    }
+}

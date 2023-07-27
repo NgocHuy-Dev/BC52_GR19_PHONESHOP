@@ -2,7 +2,7 @@
 
 // =========================================
 
-// getProducts();
+getProducts();
 
 function getProducts() {
   apiGetProducts()
@@ -19,7 +19,7 @@ function getProducts() {
 // Hàm hiển thị data ra giao diện
 function display(products) {
   let html = products.reduce((result, value) => {
-    product = new Product(
+    let product = new Product(
       value.id,
       value.name,
       value.price,
@@ -30,19 +30,30 @@ function display(products) {
       value.desc,
       value.type
     );
-
+    console.log(product.price);
     return (
       result +
       `
-      <tr>
-          <td>1</td>
-          <td>${product.name}</td>
-          <td>${product.price}</td>
-          <td>
-            <img src="${product.img}" width="100px" height="100px" />
-          </td>
-          `
+      <div class="col-3">
+      <div class="p-3">
+        <div class="card p-3" style="width: 18rem; height: 30rem">
+          
+            <img src="${product.img}" />
+          
+          <div class="card-body">
+            <h5 class="text-center">${product.name}</h5>
+            <h4>Giá: ${product.price} VNĐ</h4>
+            <p class="card-text">${product.desc}</p>
+          </div>
+          
+            <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+          
+        </div>
+      </div>
+    </div>
+    `
     );
   }, "");
-  document.getElementById("tblDanhSachSP").innerHTML = html;
+
+  document.getElementById("productList").innerHTML = html;
 }
