@@ -22,6 +22,50 @@
     border-bottom-right-radius: 16px;
   }
 }
+.main-card .card {
+  margin: auto 0;
+  width: 288px;
+  height: 430px;
+  position: relative;
+}
+.main-card .card .overlay {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: rgba(8, 8, 8, 0.54);
+}
+.main-card .card:hover .overlay {
+  opacity: 0.9;
+  border-radius: calc(0.375rem - 1px);
+}
+.main-card .card .product-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.btn-cart {
+  background-color: #ffffff;
+}
+.btn-cart .cart-icon {
+  color: #8062D6;
+  padding: 15px;
+}
+
 #header {
   background-color: #322653;
   position: fixed;
@@ -29,12 +73,12 @@
   z-index: 10;
 }
 #header .navbar-brand {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 700;
 }
 #header .nav-link {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 700;
   padding: 25px;
@@ -52,20 +96,21 @@
   background-color: #322653;
 }
 #footer h3 {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 600;
   padding-top: 20px;
 }
 #footer p {
-  color: #fff;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 400;
 }
 
 .product {
+  background-color: #9288F8;
   position: relative;
-  top: 100px;
+  top: 94px;
   padding-bottom: 100px;
 }
 .product .card .card-bottom {

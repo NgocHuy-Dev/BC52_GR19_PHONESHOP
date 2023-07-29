@@ -35,8 +35,8 @@ function display(products) {
       result +
       `
       <div class="col-3">
-      <div class="p-3">
-        <div class="card p-3" style="width: 18rem; height: 30rem">
+      <div class="main-card p-3">
+        <div class="card p-3">
           
             <img src="${product.img}" />
           
@@ -46,9 +46,18 @@ function display(products) {
             <p class="card-text">${product.desc}</p>
           </div>
           
-            <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
           
+          <div class="overlay">
+                <div class="product-text">
+                  <p>Màn hình: ${product.screen}</p>
+                  <p>Camera trước: ${product.frontCamera}</p>
+                  <p>Camera sau: ${product.backCamera}</p>
+                  <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                </div>
+                
+              </div>
         </div>
+        
       </div>
     </div>
     `
