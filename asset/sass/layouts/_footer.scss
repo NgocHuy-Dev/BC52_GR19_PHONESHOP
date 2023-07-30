@@ -1,4 +1,6 @@
 #footer {
+    position: sticky;
+    top: 100%;
     background-color: $color-navy;
     h3 {
         @include styleText($color-while,$fs-3,$fw-2);

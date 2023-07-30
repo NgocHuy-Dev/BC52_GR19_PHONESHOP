@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 @media (min-width: 1025px) {
   .h-custom {
     height: 100vh !important;
@@ -99,6 +107,8 @@
 }
 
 #footer {
+  position: sticky;
+  top: 100%;
   background-color: #322653;
 }
 #footer h3 {

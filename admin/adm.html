@@ -43,7 +43,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Shop</a>
+              <a class="nav-link" href="../customer/customer.html">Shop</a>
             </li>
             <li class="nav-item">
               <!-- --- CART ICON --- -->
@@ -168,7 +168,7 @@
         <div
           class="infor_header d-flex justify-content-between mb-2 py-3 px-2 rounded-4"
         >
-          <h3 class="text-light">Phone Management</h3>
+          <h3 class="text-danger">Phone Management</h3>
           <button
             type="button"
             id="btnaddphone"
@@ -182,7 +182,6 @@
           </button>
 
           <!-- Modal  -->
-
           <div
             class="modal fade"
             id="addphoneModal"
@@ -210,53 +209,49 @@
                         <i class="fa-solid fa-mobile-screen"></i> Phone
                         Name</label
                       >
-                      <input type="text" class="form-control" id="Name" />
+                      <input type="text" class="form-control" id="name" />
                     </div>
                     <div class="mb-3">
                       <label for="PhonePrice" class="col-form-label">
                         <i class="fa-solid fa-money-bill-wave"></i> Price</label
                       >
-                      <input type="text" class="form-control" id="Price" />
+                      <input type="text" class="form-control" id="price" />
                     </div>
                     <div class="mb-3">
                       <label for="PhoneScreen" class="col-form-label">
                         <i class="fa-solid fa-display"></i> Screen</label
                       >
-                      <input type="text" class="form-control" id="Screen" />
+                      <input type="text" class="form-control" id="screen" />
                     </div>
                     <div class="mb-3">
                       <label for="BackCamera" class="col-form-label">
                         <i class="fa-solid fa-camera"></i> Back Camera</label
                       >
-                      <input type="text" class="form-control" id="BackCamera" />
+                      <input type="text" class="form-control" id="backCamera" />
                     </div>
                     <div class="mb-3">
                       <label for="FontCamera" class="col-form-label">
                         <i class="fa-solid fa-camera"></i> Font Camera</label
                       >
-                      <input type="text" class="form-control" id="FontCamera" />
+                      <input type="text" class="form-control" id="fontCamera" />
                     </div>
                     <div class="mb-3">
                       <label for="PhonePhoto" class="col-form-label">
                         <i class="fa-solid fa-image"></i> Photo</label
                       >
-                      <input type="text" class="form-control" id="Img" />
+                      <input type="text" class="form-control" id="img" />
                     </div>
                     <div class="mb-3">
                       <label for="PhoneDesc" class="col-form-label">
                         <i class="fa-solid fa-tags"></i> Description</label
                       >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="Description"
-                      />
+                      <input type="text" class="form-control" id="desc" />
                     </div>
                     <div class="mb-3">
                       <label for="PhoneBrand" class="col-form-label">
                         <i class="fa-solid fa-hashtag"></i> Brand</label
                       >
-                      <input type="text" class="form-control" id="Brand" />
+                      <input type="text" class="form-control" id="brand" />
                     </div>
                   </form>
                 </div>
@@ -268,12 +263,17 @@
                   >
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary">Save</button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onclick="createProduct()"
+                  >
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-
           <!-- /Modal  -->
         </div>
       </div>
