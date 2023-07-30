@@ -49,10 +49,12 @@ function display(products) {
           
           <div class="overlay">
                 <div class="product-text">
-                  <p>Màn hình: ${product.screen}</p>
-                  <p>Camera trước: ${product.frontCamera}</p>
-                  <p>Camera sau: ${product.backCamera}</p>
-                  <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                <h5>Màn hình: <span>${product.screen}</span></h5>
+                <h5>Camera trước: <span>${product.frontCamera}</span></h5>
+                <h5>Camera sau: <span>${product.backCamera}</span></h5>
+                
+                  
+                  <a href="#" class="btn btn-primary btn-add">Thêm vào giỏ hàng</a>
                 </div>
                 
               </div>

@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: start;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -42,20 +43,25 @@
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: rgba(8, 8, 8, 0.54);
+  background-color: #FFD2D7;
 }
 .main-card .card:hover .overlay {
   opacity: 0.9;
   border-radius: calc(0.375rem - 1px);
 }
 .main-card .card .product-text {
-  color: white;
+  color: #322653;
   font-size: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+.main-card .card span {
+  color: #322653;
+  font-size: 1.1rem;
+  font-weight: 400;
 }
 
 .btn-cart {
