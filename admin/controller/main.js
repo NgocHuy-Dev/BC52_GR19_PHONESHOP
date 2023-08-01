@@ -14,25 +14,43 @@ function getProducts() {
 
 // Hàm thêm sản phẩm
 function createProduct() {
+  // DOM và khởi tạo object product
   let product = {
-    name: getElement("#name").value,
-    price: +getElement("#price").value,
-    screen: getElement("#screen").value,
-    backCamera: getElement("#backCamera").value,
-    fontCamera: getElement("#fontCamera").value,
-    img: getElement("#img").value,
-    desc: getElement("#desc").value,
-    brand: getElement("#brand").value,
+    name: getElementById("namePhone").value,
+    price: getElementById("price").value,
+    screen: getElementById("screen").value,
+    backCamera: getElementById("backCamera").value,
+    frontCamera: getElementById("frontCamera").value,
+    img: getElementById("img").value,
+    desc: getElementById("desc").value,
+    type: getElementById("type").value,
   };
-  // gọi API thêm sản phẩm
+
+  // Gọi API thêm sản phẩm
   apiCreateProduct(product)
     .then((response) => {
       return apiGetProducts();
     })
     .then((response) => {
+      // response là kết quả promise của hàm apiGetProducts
       display(response.data);
       // Ẩn modal
-      $("#exampleModalLabel").modal("hide");
+      $("#addPhoneModal").modal("hide");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// Hàm xóa sản phẩm
+function deleteProduct(productId) {
+  apiDeleteProduct(productId)
+    .then(() => {
+      // Xoá thành công
+      return apiGetProducts();
+    })
+    .then((response) => {
+      display(response.data);
     })
     .catch((error) => {
       console.log(error);
@@ -53,7 +71,6 @@ function display(products) {
       value.desc,
       value.type
     );
-    console.log(product.name);
     return (
       result +
       `
@@ -78,7 +95,7 @@ function display(products) {
 
                 <button
                   class="btn bg-danger"
-                  onclick="btnDelete('3')"
+                  onclick="deleteProduct('${product.id}')"
                   id="btnDelete"
                 >
                   Delete
@@ -91,3 +108,11 @@ function display(products) {
 
   document.getElementById("tablePhone").innerHTML = html;
 }
+
+document.getElementById("btnAddPhone").onclick = () => {
+  document.getElementsByClassName("modal-title").innerHTML = "Thêm sản phẩm";
+  document.getElementsByClassName("modal-footer").innerHTML = `
+    <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    <button class="btn btn-success" onclick="createProduct()">Save</button>
+  `;
+};

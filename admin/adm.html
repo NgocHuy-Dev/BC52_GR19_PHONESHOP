@@ -171,10 +171,10 @@
           <h3 class="text-danger">Phone Management</h3>
           <button
             type="button"
-            id="btnaddphone"
+            id="btnAddPhone"
             class="btn btn-success"
             data-bs-toggle="modal"
-            data-bs-target="#addphoneModal"
+            data-bs-target="#addPhoneModal"
             data-bs-whatever="@mdo"
           >
             <i class="fa fa-plus mr-1"></i>
@@ -184,9 +184,9 @@
           <!-- Modal  -->
           <div
             class="modal fade"
-            id="addphoneModal"
+            id="addPhoneModal"
             tabindex="-1"
-            aria-labelledby="addPhonemodallabel"
+            aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
             <div class="modal-dialog">
@@ -203,57 +203,55 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <form class="Addphone_edit">
-                    <div class="mb-3">
-                      <label for="PhoneName" class="col-form-label">
-                        <i class="fa-solid fa-mobile-screen"></i> Phone
-                        Name</label
-                      >
-                      <input type="text" class="form-control" id="name" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="PhonePrice" class="col-form-label">
-                        <i class="fa-solid fa-money-bill-wave"></i> Price</label
-                      >
-                      <input type="text" class="form-control" id="price" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="PhoneScreen" class="col-form-label">
-                        <i class="fa-solid fa-display"></i> Screen</label
-                      >
-                      <input type="text" class="form-control" id="screen" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="BackCamera" class="col-form-label">
-                        <i class="fa-solid fa-camera"></i> Back Camera</label
-                      >
-                      <input type="text" class="form-control" id="backCamera" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="FontCamera" class="col-form-label">
-                        <i class="fa-solid fa-camera"></i> Font Camera</label
-                      >
-                      <input type="text" class="form-control" id="fontCamera" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="PhonePhoto" class="col-form-label">
-                        <i class="fa-solid fa-image"></i> Photo</label
-                      >
-                      <input type="text" class="form-control" id="img" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="PhoneDesc" class="col-form-label">
-                        <i class="fa-solid fa-tags"></i> Description</label
-                      >
-                      <input type="text" class="form-control" id="desc" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="PhoneBrand" class="col-form-label">
-                        <i class="fa-solid fa-hashtag"></i> Brand</label
-                      >
-                      <input type="text" class="form-control" id="brand" />
-                    </div>
-                  </form>
+                  <div class="form-group">
+                    <label for="PhoneName" class="col-form-label">
+                      <i class="fa-solid fa-mobile-screen"></i> Phone
+                      Name</label
+                    >
+                    <input type="text" class="form-control" id="namePhone" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhonePrice" class="col-form-label">
+                      <i class="fa-solid fa-money-bill-wave"></i> Price</label
+                    >
+                    <input type="text" class="form-control" id="price" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneScreen" class="col-form-label">
+                      <i class="fa-solid fa-display"></i> Screen</label
+                    >
+                    <input type="text" class="form-control" id="screen" />
+                  </div>
+                  <div class="form-group">
+                    <label for="BackCamera" class="col-form-label">
+                      <i class="fa-solid fa-camera"></i> Back Camera</label
+                    >
+                    <input type="text" class="form-control" id="backCamera" />
+                  </div>
+                  <div class="form-group">
+                    <label for="FontCamera" class="col-form-label">
+                      <i class="fa-solid fa-camera"></i> Font Camera</label
+                    >
+                    <input type="text" class="form-control" id="fontCamera" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhonePhoto" class="col-form-label">
+                      <i class="fa-solid fa-image"></i> Photo</label
+                    >
+                    <input type="text" class="form-control" id="img" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneDesc" class="col-form-label">
+                      <i class="fa-solid fa-tags"></i> Description</label
+                    >
+                    <input type="text" class="form-control" id="desc" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneBrand" class="col-form-label">
+                      <i class="fa-solid fa-hashtag"></i> Brand</label
+                    >
+                    <input type="text" class="form-control" id="type" />
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button
