@@ -14,7 +14,7 @@ function apiGetProductById(productId) {
 
 function apiCreateProduct(product) {
   return axios({
-    url: "https://64bc101c7b33a35a4446fd69.mockapi.io/products",
+    url: "https://64bc101c7b33a35a4446fd69.mockapi.io/phone-data",
     method: "POST",
     data: product,
   });

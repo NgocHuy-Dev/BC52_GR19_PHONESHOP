@@ -15,26 +15,27 @@ function getProducts() {
 // Hàm thêm sản phẩm
 function createProduct() {
   // DOM và khởi tạo object product
-  let product = {
-    name: getElementById("namePhone").value,
-    price: getElementById("price").value,
-    screen: getElementById("screen").value,
-    backCamera: getElementById("backCamera").value,
-    frontCamera: getElementById("frontCamera").value,
-    img: getElementById("img").value,
-    desc: getElementById("desc").value,
-    type: getElementById("type").value,
+  const product = {
+    id: getElement("#id").value,
+    name: getElement("#namePhone").value,
+    price: getElement("#price").value,
+    screen: getElement("#screen").value,
+    backCamera: getElement("#backCamera").value,
+    frontCamera: getElement("#frontCamera").value,
+    img: getElement("#img").value,
+    desc: getElement("#desc").value,
+    type: getElement("#type").value,
   };
 
+  // console.log(price);
   // Gọi API thêm sản phẩm
   apiCreateProduct(product)
     .then((response) => {
       return apiGetProducts();
     })
     .then((response) => {
-      // response là kết quả promise của hàm apiGetProducts
       display(response.data);
-      // Ẩn modal
+
       $("#addPhoneModal").modal("hide");
     })
     .catch((error) => {
@@ -116,3 +117,8 @@ document.getElementById("btnAddPhone").onclick = () => {
     <button class="btn btn-success" onclick="createProduct()">Save</button>
   `;
 };
+
+// ======= Utils =======
+function getElement(selector) {
+  return document.querySelector(selector);
+}
