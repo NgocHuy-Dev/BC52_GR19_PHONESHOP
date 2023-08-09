@@ -5,7 +5,6 @@ function getProducts() {
     .then((response) => {
       // Gọi hàm display để hiển thị ra giao diện
       display(response.data);
-      // console.log(response.data);
     })
     .catch((error) => {
       console.log(error);
@@ -27,7 +26,6 @@ function createProduct() {
     type: getElement("#type").value,
   };
 
-  // console.log(price);
   // Gọi API thêm sản phẩm
   apiCreateProduct(product)
     .then((response) => {
@@ -35,8 +33,8 @@ function createProduct() {
     })
     .then((response) => {
       display(response.data);
-
       $("#addPhoneModal").modal("hide");
+      console.log("hehehe");
     })
     .catch((error) => {
       console.log(error);
@@ -52,6 +50,65 @@ function deleteProduct(productId) {
     })
     .then((response) => {
       display(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function selectProduct(productId) {
+  // Hiển thị modal
+  $("#addPhoneModal").modal("show");
+
+  // Hiển thị title và footer của modal
+  getElement(".modal-title").innerHTML = "Cập nhật sản phẩm";
+  getElement(".modal-footer").innerHTML = `
+    <button class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+    <button class="btn btn-success" onclick="updateProduct('${productId}')">Cập nhật</button>
+  `;
+
+  apiGetProductById(productId)
+    .then((response) => {
+      // Lấy thông tin sản phẩm thành công => hiển thị dữ liệu lên form
+      let product = response.data;
+      getElement("#id").value = product.id;
+      getElement("#namePhone").value = product.name;
+      getElement("#price").value = product.price;
+      getElement("#screen").value = product.screen;
+      getElement("#backCamera").value = product.backCamera;
+      getElement("#frontCamera").value = product.frontCamera;
+      getElement("#img").value = product.img;
+      getElement("#desc").value = product.desc;
+      getElement("#type").value = product.type;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+// Hàm cập nhật sản phẩm
+function updateProduct(productId) {
+  // DOM và khởi tạo object new product
+  let newProduct = {
+    id: getElement("#id").value,
+    name: getElement("#namePhone").value,
+    price: getElement("#price").value,
+    screen: getElement("#screen").value,
+    backCamera: getElement("#backCamera").value,
+    frontCamera: getElement("#frontCamera").value,
+    img: getElement("#img").value,
+    desc: getElement("#desc").value,
+    type: getElement("#type").value,
+  };
+
+  apiUpdateProduct(productId, newProduct)
+    .then(() => {
+      // Cập nhật thành công
+      return apiGetProducts();
+    })
+    .then((response) => {
+      display(response.data);
+      $("#addPhoneModal").modal("hide");
     })
     .catch((error) => {
       console.log(error);
@@ -86,10 +143,7 @@ function display(products) {
               <td class="" style="text-align: center">
                 <button
                   class="btn my-3 me-1 bg-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#addphoneModal"
-                  data-bs-whatever="@mdo"
-                  id="btnEdit"
+                  onclick="selectProduct('${product.id}')"
                 >
                   Edit
                 </button>
@@ -110,14 +164,18 @@ function display(products) {
   document.getElementById("tablePhone").innerHTML = html;
 }
 
-document.getElementById("btnAddPhone").onclick = () => {
-  document.getElementsByClassName("modal-title").innerHTML = "Thêm sản phẩm";
-  document.getElementsByClassName("modal-footer").innerHTML = `
-    <button class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-    <button class="btn btn-success" onclick="createProduct()">Save</button>
+// DOM thêm title và button khi nhấm button Add Phone
+getElement("#btnAddPhone").onclick = () => {
+  getElement(".modal-title").innerHTML = "Thêm sản phẩm";
+  getElement(".modal-footer").innerHTML = `
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+> Close </button>
+    <button id="btnAdd" class="btn btn-success" onclick="createProduct()"
+    
+    >Thêm</button>
+
   `;
 };
-
 // ======= Utils =======
 function getElement(selector) {
   return document.querySelector(selector);

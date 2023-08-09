@@ -24,6 +24,7 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    
 
     <!-- my CSS -->
     <link rel="stylesheet" href="../asset/css/main.css" />
@@ -181,104 +182,7 @@
             Add Phone
           </button>
 
-          <!-- Modal  -->
-          <div
-            class="modal fade"
-            id="addPhoneModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">
-                    Add Phone
-                  </h1>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label>
-                      </i> ID</label
-                    >
-                    <input type="text" class="form-control" id="id" />
-                  </div>
-                  <div class="form-group">
-                    <label for="PhoneName" class="col-form-label">
-                      <i class="fa-solid fa-mobile-screen"></i> Phone
-                      Name</label
-                    >
-                    <input type="text" class="form-control" id="namePhone" />
-                  </div>
-                  <div class="form-group">
-                    <label>
-                      <i class="fa-solid fa-money-bill-wave"></i> Price</label
-                    >
-                    <input type="text" class="form-control" id="price" />
-                  </div>
-                  <div class="form-group">
-                    <label for="PhoneScreen" class="col-form-label">
-                      <i class="fa-solid fa-display"></i> Screen</label
-                    >
-                    <input type="text" class="form-control" id="screen" />
-                  </div>
-                  <div class="form-group">
-                    <label for="BackCamera" class="col-form-label">
-                      <i class="fa-solid fa-camera"></i> Back Camera</label
-                    >
-                    <input type="text" class="form-control" id="backCamera" />
-                  </div>
-                  <div class="form-group">
-                    <label for="FontCamera" class="col-form-label">
-                      <i class="fa-solid fa-camera"></i> Font Camera</label
-                    >
-                    <input type="text" class="form-control" id="frontCamera" />
-                  </div>
-                  <div class="form-group">
-                    <label for="PhonePhoto" class="col-form-label">
-                      <i class="fa-solid fa-image"></i> Photo</label
-                    >
-                    <input type="text" class="form-control" id="img" />
-                  </div>
-                  <div class="form-group">
-                    <label for="PhoneDesc" class="col-form-label">
-                      <i class="fa-solid fa-tags"></i> Description</label
-                    >
-                    <input type="text" class="form-control" id="desc" />
-                  </div>
-                  <div class="form-group">
-                    <label for="PhoneBrand" class="col-form-label">
-                      <i class="fa-solid fa-hashtag"></i> Brand</label
-                    >
-                    <input type="text" class="form-control" id="type" />
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    onclick="createProduct()"
-                  >
-                    Save
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /Modal  -->
+
         </div>
       </div>
       <div class="infor_content bg-light rounded-4">
@@ -422,6 +326,91 @@
       <!-- /Modal  -->
     </section>
     <!-- ======== Listinfo =============  -->
+          <!-- Modal  -->
+          <div
+            class="modal fade"
+            id="addPhoneModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Add Phone
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>
+                      </i> ID</label
+                    >
+                    <input type="text" class="form-control" id="id" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneName" class="col-form-label">
+                      <i class="fa-solid fa-mobile-screen"></i> Phone
+                      Name</label
+                    >
+                    <input type="text" class="form-control" id="namePhone" />
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <i class="fa-solid fa-money-bill-wave"></i> Price</label
+                    >
+                    <input type="text" class="form-control" id="price" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneScreen" class="col-form-label">
+                      <i class="fa-solid fa-display"></i> Screen</label
+                    >
+                    <input type="text" class="form-control" id="screen" />
+                  </div>
+                  <div class="form-group">
+                    <label for="BackCamera" class="col-form-label">
+                      <i class="fa-solid fa-camera"></i> Back Camera</label
+                    >
+                    <input type="text" class="form-control" id="backCamera" />
+                  </div>
+                  <div class="form-group">
+                    <label for="FontCamera" class="col-form-label">
+                      <i class="fa-solid fa-camera"></i> Font Camera</label
+                    >
+                    <input type="text" class="form-control" id="frontCamera" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhonePhoto" class="col-form-label">
+                      <i class="fa-solid fa-image"></i> Photo</label
+                    >
+                    <input type="text" class="form-control" id="img" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneDesc" class="col-form-label">
+                      <i class="fa-solid fa-tags"></i> Description</label
+                    >
+                    <input type="text" class="form-control" id="desc" />
+                  </div>
+                  <div class="form-group">
+                    <label for="PhoneBrand" class="col-form-label">
+                      <i class="fa-solid fa-hashtag"></i> Brand</label
+                    >
+                    <input type="text" class="form-control" id="type" />
+                  </div>
+                </div>
+                <div class="modal-footer">
+  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Modal  -->
 
     <!-- --- foooter ---  -->
     <footer id="footer">
@@ -452,22 +441,26 @@
     </footer>
     <!-- --- foooter ---  -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
       crossorigin="anonymous"
     ></script>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
+    
+    
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script src="./model/products.js"></script>
     <script src="./services/productAPI.js"></script>
-    <script src="./controller/main.js"></script>
+    <script defer src="./controller/main.js"></script>
   </body>
 </html>
