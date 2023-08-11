@@ -185,6 +185,8 @@
 
         </div>
       </div>
+
+      
       <div class="infor_content bg-light rounded-4">
         <table class="table display" id="myTable">
           <!-- -- head --  -->
@@ -192,7 +194,12 @@
             <tr>
               <th>Id</th>
               <th>Name</th>
-              <th>Price</th>
+              <th class="nowrap">
+                <span class="mr-1">Price</span>
+                <i class="fa fa-arrow-up ms-2" id="sortUp"></i>
+                <i class="fa fa-arrow-down ms-2" id="sortDown"></i>
+              </th>
+              
               <th>Photo</th>
               <th>Description</th>
               <th><em class="fa fa-cog"></em> Action</th>
@@ -201,129 +208,11 @@
 
           <!-- --- body --  -->
           <tbody id="tablePhone">
-            <!-- <tr>
-              <td>1</td>
-              <td><strong>123</strong></td>
-              <td>$123</td>
-              <td>
-                <img src="123" alt="" width="150" height="150" />
-              </td>
-              <td>123</td>
-              <td class="" style="text-align: center">
-                <button
-                  class="btn my-3 me-1 bg-warning"
-                  data-bs-toggle="modal"
-                  data-bs-target="#editPhoneModal"
-                  onclick="btnEdit('3')"
-                  id="btnEdit"
-                >
-                  Edit
-                </button>
 
-                <button
-                  class="btn bg-danger"
-                  onclick="btnDelete('3')"
-                  id="btnDelete"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr> -->
           </tbody>
         </table>
       </div>
-      <!-- Modal  -->
 
-      <!-- <div
-        class="modal fade"
-        style="text-align: start"
-        id="editPhoneModal"
-        tabindex="-1"
-        aria-labelledby="editPhonemodallabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Edit Phone
-              </h1>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form class="Addphone_edit">
-                <div class="mb-3">
-                  <label for="PhoneName" class="col-form-label">
-                    <i class="fa-solid fa-mobile-screen"></i> Phone Name</label
-                  >
-                  <input type="text" class="form-control" id="Name" />
-                </div>
-                <div class="mb-3">
-                  <label for="PhonePrice" class="col-form-label">
-                    <i class="fa-solid fa-money-bill-wave"></i>
-                    Price</label
-                  >
-                  <input type="text" class="form-control" id="Price" />
-                </div>
-                <div class="mb-3">
-                  <label for="PhoneScreen" class="col-form-label">
-                    <i class="fa-solid fa-display"></i> Screen</label
-                  >
-                  <input type="text" class="form-control" id="Screen" />
-                </div>
-                <div class="mb-3">
-                  <label for="BackCamera" class="col-form-label">
-                    <i class="fa-solid fa-camera"></i> Back Camera</label
-                  >
-                  <input type="text" class="form-control" id="BackCamera" />
-                </div>
-                <div class="mb-3">
-                  <label for="FontCamera" class="col-form-label">
-                    <i class="fa-solid fa-camera"></i> Font Camera</label
-                  >
-                  <input type="text" class="form-control" id="FontCamera" />
-                </div>
-                <div class="mb-3">
-                  <label for="PhonePhoto" class="col-form-label">
-                    <i class="fa-solid fa-image"></i> Photo</label
-                  >
-                  <input type="text" class="form-control" id="Img" />
-                </div>
-                <div class="mb-3">
-                  <label for="PhoneDesc" class="col-form-label">
-                    <i class="fa-solid fa-tags"></i>
-                    Description</label
-                  >
-                  <input type="text" class="form-control" id="Description" />
-                </div>
-                <div class="mb-3">
-                  <label for="PhoneBrand" class="col-form-label">
-                    <i class="fa-solid fa-hashtag"></i> Brand</label
-                  >
-                  <input type="text" class="form-control" id="Brand" />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <!-- /Modal  -->
     </section>
     <!-- ======== Listinfo =============  -->
           <!-- Modal  -->
