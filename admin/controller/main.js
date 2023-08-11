@@ -34,7 +34,6 @@ function createProduct() {
     .then((response) => {
       display(response.data);
       $("#addPhoneModal").modal("hide");
-      console.log("hehehe");
     })
     .catch((error) => {
       console.log(error);
@@ -135,7 +134,7 @@ function display(products) {
       <tr>
               <td>${index + 1}</td>
               <td><strong>${product.name}</strong></td>
-              <td>${product.price}</td>
+              <td>${product.price} $</td>
               <td>
                 <img src="${product.img}" alt="" width="100" height="100" />
               </td>
@@ -180,3 +179,56 @@ getElement("#btnAddPhone").onclick = () => {
 function getElement(selector) {
   return document.querySelector(selector);
 }
+
+let searchArr = [];
+// sắp sếp tăng dần
+getElement("#sortUp").onclick = function () {
+  apiGetProducts()
+    .then((response) => {
+      let searchArr = response.data;
+      function compare(a, b) {
+        const priceA = a.price;
+        const priceB = b.price;
+
+        let comparison = 0;
+        if (priceA > priceB) {
+          comparison = 1;
+        } else if (priceA < priceB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+
+      searchArr.sort(compare);
+      display(searchArr);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// sắp xếp giảm dần
+getElement("#sortDown").onclick = function () {
+  apiGetProducts()
+    .then((response) => {
+      let searchArr = response.data;
+      function compare(a, b) {
+        const priceA = a.price;
+        const priceB = b.price;
+
+        let comparison = 0;
+        if (priceA > priceB) {
+          comparison = 1;
+        } else if (priceA < priceB) {
+          comparison = -1;
+        }
+        return comparison * -1;
+      }
+
+      searchArr.sort(compare);
+      display(searchArr);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
