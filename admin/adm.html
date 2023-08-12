@@ -192,7 +192,11 @@
             <tr>
               <th>Id</th>
               <th>Name</th>
-              <th>Price</th>
+              <th class="nowrap">
+                <span class="mr-1">Price</span>
+                <i class="fa fa-arrow-up" id="sortUp"></i>
+                <i class="fa fa-arrow-down" id="sortDown"></i>
+              </th>
               <th>Photo</th>
               <th>Description</th>
               <th><em class="fa fa-cog"></em> Action</th>
@@ -200,9 +204,7 @@
           </thead>
 
           <!-- --- body --  -->
-          <tbody id="tablePhone">
-            
-          </tbody>
+          <tbody id="tablePhone"></tbody>
         </table>
       </div>
 
