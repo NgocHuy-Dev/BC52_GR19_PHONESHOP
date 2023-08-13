@@ -94,44 +94,23 @@
                 <div class="card-body p-0">
                   <div class="row g-0">
                     <div class="">
-                      <div class="p-5">
-                        <div
-                          class="d-flex justify-content-between align-items-center mb-5"
-                        >
-                          <h1 class="fw-bold mb-0 text-black">Sản phẩm</h1>
-                          <h6 class="mb-0 text-muted">Số lượng : ??</h6>
-                        </div>
-                        <hr class="my-4" />
+                      <div class="p-2" >
+                        
+                      
                         <!-- ====== ITEM IN CART======  -->
-                        <table class="table table-bordered">
+                        <div id="cart"> <table class="table table-bordered">
                           <thead>
                             <th>Hình ảnh</th>
-                            <th>Loại</th>
+                            <th>Tên sản phẩm</th>
                             <th>Số lượng</th>
                             <th>Giá</th>
                             <th></th>
                           </thead>
-                          <tbody id="cartList">
-                            <tr>
-                              <td>${product.img}</td>
-                              <td>${product.type}</td>
-                              <td>
-                                <input
-                                  id="form1"
-                                  min="0"
-                                  name="quantity"
-                                  value="1"
-                                  type="number"
-                                  class="form-control form-control-sm"
-                                />
-                              </td>
-                              <td>${product.price}</td>
-                              <td><button class="btn btn-close"></button></td>
-                            </tr>
-                          </tbody>
-                        </table>
+                          <tbody id="cartList"></tbody>
+                        </table></div>
+                       
 
-                        <hr class="my-4" />
+                       
                         <!-- -------------------  -->
                         <div class="text-start">
                           <h3>Tổng: 1234$<span></span></h3>
@@ -182,34 +161,7 @@
 
       <!-- ====  Product items ======== -->
       <div class="container overflow-hidden text-center">
-        <div class="row gy-5 w-100" id="productList">
-          <!-- ------item-----  -->
-          <!-- <div class="col-3">
-            <div class="p-3">
-              <div class="card p-3" style="width: 18rem; height: 30rem">
-                <div class="card-top">
-                  <img src="${product.img}" />
-                </div>
-                <div class="card-body">
-                  <h5 class="text-start">${product.name}</h5>
-                  <h4>Giá: ${product.price} VNĐ</h4>
-                  <p class="card-text">${product.desc}</p>
-                </div>
-                <div class="card-bottom">
-                  <a href="#" class="btn btn-primary">Thêm vào giỏ hàng</a>
-                </div>
-                <div class="overlay">
-                  <div class="product-text">
-                    <p>Màn hình: ${product.screen}</p>
-                    <p>Camera trước: ${product.frontCamera}</p>
-                    <p>Camera sau: ${product.backCamera}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
-      </div>
+        <div class="row gy-5 w-100" id="productList"></div>
 
       <!-- ====  Product items ======== -->
     </section>
@@ -261,5 +213,6 @@
     <script src="./model/product.js"></script>
     <script src="./services/productAPI.js"></script>
     <script src="./controller/main.js"></script>
+    <script src="./controller/cart.js"></script>
   </body>
 </html>

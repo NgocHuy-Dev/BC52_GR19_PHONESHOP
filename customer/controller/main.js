@@ -12,16 +12,6 @@ function getProducts() {
     });
 }
 
-function selectItem(productId) {
-  apiGetProductById(productId)
-    .then((response) => {
-      let product = response.data;
-      displayCart(product);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
 // Hàm hiển thị data ra giao diện
 function display(products) {
   let html = products.reduce((result, value) => {
@@ -74,46 +64,6 @@ function display(products) {
   document.getElementById("productList").innerHTML = html;
 }
 
-// Hàm hiển thị sản phẩm vào giỏ hàng
-function displayCart(products) {
-  let html = products.reduce((result, value) => {
-    let product = new Product(
-      value.id,
-      value.name,
-      value.price,
-      value.screen,
-      value.backCamera,
-      value.frontCamera,
-      value.img,
-      value.desc,
-      value.type
-    );
-    return (
-      result +
-      `
-      <tr>
-      <td>${product.img}</td>
-      <td>${product.type}</td>
-      <td>
-        <input
-          id="form1"
-          min="0"
-          name="quantity"
-          value="1"
-          type="number"
-          class="form-control form-control-sm"
-        />
-      </td>
-      <td>${product.price}</td>
-      <td><button class="btn btn-close"></button></td>
-    </tr>
-      `
-    );
-  }, "");
-
-  document.getElementById("cartList").innerHTML = html;
-}
-
 // ======= Utils =======
 function getElement(selector) {
   return document.querySelector(selector);
@@ -158,3 +108,5 @@ function addToCart() {
     let product = response.data;
   });
 }
+
+// CÁC CHỨC NĂNG CHO GIỎ HÀNG
