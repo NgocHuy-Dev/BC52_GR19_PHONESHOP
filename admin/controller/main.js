@@ -1,3 +1,4 @@
+alert("Trang chỉ dành cho Admin");
 getProducts();
 
 function getProducts() {
@@ -62,7 +63,7 @@ function selectProduct(productId) {
   // Hiển thị title và footer của modal
   getElement(".modal-title").innerHTML = "Cập nhật sản phẩm";
   getElement(".modal-footer").innerHTML = `
-    <button class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+    <button class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
     <button class="btn btn-success" onclick="updateProduct('${productId}')">Cập nhật</button>
   `;
 
