@@ -11,6 +11,7 @@ html {
 
 body {
   min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 @media (min-width: 1025px) {

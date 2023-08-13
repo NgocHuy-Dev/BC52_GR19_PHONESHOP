@@ -103,37 +103,33 @@
                         </div>
                         <hr class="my-4" />
                         <!-- ====== ITEM IN CART======  -->
-                        <div
-                          class="row mb-4 d-flex justify-content-between align-items-center"
-                        >
-                          <div class="col-md-2 col-lg-2 col-xl-2">
-                            <img
-                              src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/_/t_m_12.png"
-                              class="img-fluid rounded-3"
-                              alt="Cotton T-shirt"
-                            />
-                          </div>
-                          <div class="col-md-2 col-lg-2 col-xl-2">
-                            <h6 class="text-muted">Type</h6>
-                            <h6 class="text-black mb-0">Name prouct</h6>
-                          </div>
-                          <div class="col-md-4 col-lg-2 col-xl-2 d-flex">
-                            <input
-                              id="form1"
-                              min="0"
-                              name="quantity"
-                              value="1"
-                              type="number"
-                              class="form-control form-control-sm"
-                            />
-                          </div>
-                          <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 class="mb-0">1000 $</h6>
-                          </div>
-                          <div class="col-md-2 col-lg-1 col-xl-1 text-end">
-                            <button class="btn btn-close"></button>
-                          </div>
-                        </div>
+                        <table class="table table-bordered">
+                          <thead>
+                            <th>Hình ảnh</th>
+                            <th>Loại</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th></th>
+                          </thead>
+                          <tbody id="cartList">
+                            <tr>
+                              <td>${product.img}</td>
+                              <td>${product.type}</td>
+                              <td>
+                                <input
+                                  id="form1"
+                                  min="0"
+                                  name="quantity"
+                                  value="1"
+                                  type="number"
+                                  class="form-control form-control-sm"
+                                />
+                              </td>
+                              <td>${product.price}</td>
+                              <td><button class="btn btn-close"></button></td>
+                            </tr>
+                          </tbody>
+                        </table>
 
                         <hr class="my-4" />
                         <!-- -------------------  -->
@@ -173,9 +169,13 @@
     <!-- ======== product =============  -->
     <section class="product">
       <div class="input-group w-25">
-        <select class="form-control m-3 me-0" id="searchType">
+        <select
+          class="form-control m-3 me-0"
+          id="searchType"
+          onchange="changeTypeOfPhone()"
+        >
           <option>All Brands</option>
-          <option>Apple</option>
+          <option>Iphone</option>
           <option>Samsung</option>
         </select>
       </div>
