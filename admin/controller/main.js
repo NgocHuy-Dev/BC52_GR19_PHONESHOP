@@ -161,7 +161,7 @@ function display(products) {
     );
   }, "");
 
-  document.getElementById("tablePhone").innerHTML = html;
+  getElement("tablePhone").innerHTML = html;
 }
 
 // DOM thêm title và button khi nhấm button Add Phone

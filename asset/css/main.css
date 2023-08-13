@@ -73,6 +73,13 @@ body {
   font-weight: 400;
 }
 
+#cart {
+  width: 100% x;
+  height: 350px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .btn-cart {
   background-color: #ffffff;
 }
