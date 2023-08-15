@@ -1,0 +1,71 @@
+.cards {
+    min-width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 8px;
+    
+    .base-card {
+      margin: auto;
+        .main-card {
+          margin: auto;
+          .card {
+            margin: auto 0;
+            width: 288px;
+            height: 430px;
+            position: relative;
+            .overlay {
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: start;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 100%;
+              width: 100%;
+              opacity: 0;
+              transition: 0.5s ease;
+              background-color: $color-peach;
+            }
+            &:hover {
+              .overlay {
+                opacity: 0.9;
+                border-radius: calc(0.375rem - 1px);
+              }
+            }
+            .product-text {
+              color: $color-navy;
+              font-size: 20px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              -ms-transform: translate(-50%, -50%);
+            }
+            span {
+              @include styleText($color-navy,$fs-2, $fw-1)
+            }
+            
+          }
+        }
+        
+    }
+}
+
+@media (max-width: 767px) {
+    .cards {
+       grid-template-columns: repeat(2, 1fr); 
+      .main-card {
+        width: 327px;
+      }
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
+  }
+

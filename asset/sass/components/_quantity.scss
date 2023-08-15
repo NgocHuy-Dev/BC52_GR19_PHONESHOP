@@ -1,0 +1,16 @@
+.quantity {
+    display: flex;
+    .btn-quantity {
+        width: 35px;
+        height: 35px;
+        background: none;
+        border: 1px solid $color-gray;
+        cursor: pointer;
+    } 
+    #quantity-input {
+        width: 45px;
+        height: 35px;
+        border: 1px solid $color-gray;
+    }
+
+}
