@@ -134,7 +134,9 @@ function display(products) {
       `
       <tr>
               <td>${index + 1}</td>
+              
               <td><strong>${product.name}</strong></td>
+              <td>${product.id}</td>
               <td>${product.price} $</td>
               <td>
                 <img src="${product.img}" alt="" width="100" height="100" />
@@ -161,7 +163,7 @@ function display(products) {
     );
   }, "");
 
-  getElement("tablePhone").innerHTML = html;
+  document.getElementById("tablePhone").innerHTML = html;
 }
 
 // DOM thêm title và button khi nhấm button Add Phone

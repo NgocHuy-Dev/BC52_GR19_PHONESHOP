@@ -29,7 +29,7 @@ function display(products) {
     return (
       result +
       `
-      <div class="col-3">
+      <div class="base-card">
       <div class="main-card p-3">
         <div class="card p-3">
           
