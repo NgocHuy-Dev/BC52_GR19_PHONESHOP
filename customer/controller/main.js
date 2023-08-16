@@ -44,7 +44,7 @@ function display(products) {
           
           <div class="overlay">
                 <div class="product-text">
-                <h5>Màn hình: <span>${product.screen}</span></h5>
+                <h5>Màn hình: <span>${product.screen} inch</span></h5>
                 <h5>Camera trước: <span>${product.frontCamera}</span></h5>
                 <h5>Camera sau: <span>${product.backCamera}</span></h5>
                 
