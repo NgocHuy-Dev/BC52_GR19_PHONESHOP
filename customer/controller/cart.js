@@ -1,4 +1,4 @@
-let itemCart = [];
+let carts = [];
 getElement("#cartList").innerHTML = `
 <h2 class="text-center">Chưa có sản phẩm nào đc chọn<h2/>
 `;
@@ -8,14 +8,39 @@ function selectItem(productId) {
   apiGetProductById(productId)
     .then((response) => {
       let item = response.data;
-      let cartItem = { ...item, quantity: 1 };
+      // let carts = [];
+      // kiểm tra xem sp đã có trong giỏ hàng hay chưa
+      const found = carts.find((items) => items.id === productId);
+      // console.log(item.id);
+      // console.log(found);
+      console.log(productId);
+      if (found) {
+        // có sản phẩm trong giỏi hàng thì tang giá trị quantity lên 1 đơn vị
+        const newCarts = carts.map((items) => {
+          if (item.id === productId) {
+            return { ...items, quantity: items.quantity + 1 };
+          }
+          return items;
+        });
+        displayCart(newCarts);
+        console.log(newCarts);
+      } else {
+        // chưa có sản phẩm trong giỏ hàng thì thêm vào giỏ và thêm thuộc tính quantity :1  cho sp
+        console.log("false");
+        carts.push({ ...item, quantity: 1 });
+        displayCart(carts);
+      }
 
-      // for (cartItem in itemCart) {
+      // ===========
+      // let newCartsss = { ...item, quantity: 1 };
+      // let hehe = { ...newCartsss, quantity: item.quantity + 1 };
+      // console.log(hehe);
+      // console.log(item.name);
+      // for (newCarts in carts) {
       //   console.log("có rồi má");
       // }
-      itemCart.push(cartItem);
-      displayCart(itemCart);
-      console.log(itemCart);
+      // carts.push(item);
+      // displayCart(carts);
     })
     .catch((error) => {
       console.log(error);
@@ -24,10 +49,10 @@ function selectItem(productId) {
 
 // Hàm xóa sản phẩm khỏi giỏ hàng
 function removeItem(itemId) {
-  itemCart = itemCart.filter((value) => {
+  carts = carts.filter((value) => {
     return value.id !== itemId;
   });
-  displayCart(itemCart);
+  displayCart(carts);
 }
 
 // Hàm reset giỏ hàng
@@ -46,7 +71,8 @@ function displayCart(products) {
       value.frontCamera,
       value.img,
       value.desc,
-      value.type
+      value.type,
+      value.quantity
     );
 
     return (
@@ -68,8 +94,8 @@ function displayCart(products) {
                     class="w-50 text-center"
                     type="text" 
                     name="quantity" 
-                    id="quantity-input"
-                    value="1"
+                    id="quantityInput"
+                    value="${product.quantity}"
                     />
                     <button
                       id="btn-countUp"
@@ -98,14 +124,14 @@ function getElement(selector) {
 
 // tăng giảm số lượng sản phẩm trong giỏ hàng
 
-let quantity = getElement("#quantity-input").value;
+let quantity = getElement("#quantityInput").value;
 
 let handlePlus = () => {
   quantity++;
-  getElement("#quantity-input").value = quantity;
+  getElement("#quantityInput").value = quantity;
 };
 
 let handleMinus = () => {
   if (quantity > 1) quantity--;
-  getElement("#quantity-input").value = quantity;
+  getElement("#quantityInput").value = quantity;
 };
