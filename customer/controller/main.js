@@ -61,7 +61,7 @@ function display(products) {
     );
   }, "");
 
-  document.getElementById("productList").innerHTML = html;
+  getElement("#productList").innerHTML = html;
 }
 
 // ======= Utils =======

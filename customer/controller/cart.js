@@ -1,4 +1,25 @@
 let carts = [];
+let newCarts = [];
+init();
+function init() {
+  carts = JSON.parse(localStorage.getItem("newCarts")) || [];
+  carts = carts.map((value) => {
+    return new Cart(
+      value.id,
+      value.name,
+      value.price,
+      value.screen,
+      value.backCamera,
+      value.frontCamera,
+      value.img,
+      value.desc,
+      value.type,
+      value.quantity
+    );
+  });
+  displayCart(carts);
+}
+console.log(newCarts);
 getElement("#cartList").innerHTML = `
 <h2 class="text-center">Chưa có sản phẩm nào đc chọn<h2/>
 `;
@@ -18,29 +39,19 @@ function selectItem(productId) {
         // có sản phẩm trong giỏi hàng thì tang giá trị quantity lên 1 đơn vị
         const newCarts = carts.map((items) => {
           if (item.id === productId) {
-            return { ...items, quantity: items.quantity + 1 };
+            return { ...items, quantity: items.quantity++ };
           }
           return items;
         });
+        localStorage.setItem("newCart", JSON.stringify(newCarts));
         displayCart(newCarts);
-        console.log(newCarts);
+        // console.log(newCarts);
       } else {
         // chưa có sản phẩm trong giỏ hàng thì thêm vào giỏ và thêm thuộc tính quantity :1  cho sp
         console.log("false");
         carts.push({ ...item, quantity: 1 });
         displayCart(carts);
       }
-
-      // ===========
-      // let newCartsss = { ...item, quantity: 1 };
-      // let hehe = { ...newCartsss, quantity: item.quantity + 1 };
-      // console.log(hehe);
-      // console.log(item.name);
-      // for (newCarts in carts) {
-      //   console.log("có rồi má");
-      // }
-      // carts.push(item);
-      // displayCart(carts);
     })
     .catch((error) => {
       console.log(error);
@@ -58,6 +69,7 @@ function removeItem(itemId) {
 // Hàm reset giỏ hàng
 function resetCart() {
   getElement("#cartList").innerHTML = "Giỏ hàng trống";
+  getElement("#total").innerHTML = ``;
 }
 
 function displayCart(products) {
@@ -74,6 +86,8 @@ function displayCart(products) {
       value.type,
       value.quantity
     );
+    console.log(value.name);
+    console.log(value.quantity);
 
     return (
       result +
@@ -97,6 +111,7 @@ function displayCart(products) {
                     id="quantityInput"
                     value="${product.quantity}"
                     />
+                    
                     <button
                       id="btn-countUp"
                       class="btn-quantity"
@@ -114,7 +129,8 @@ function displayCart(products) {
     );
   }, "");
 
-  document.getElementById("cartList").innerHTML = html;
+  getElement("#cartList").innerHTML = html;
+  getElement("#total").innerHTML = `<h3>Tổng: 1234 $</h3>`;
 }
 
 // ======= Utils =======
@@ -135,3 +151,6 @@ let handleMinus = () => {
   if (quantity > 1) quantity--;
   getElement("#quantityInput").value = quantity;
 };
+
+// tính tổng
+function tital() {}
