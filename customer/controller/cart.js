@@ -61,11 +61,28 @@ function selectItem(productId) {
       console.log(error);
     });
 }
+
+// function updateCart
+function updateCart() {
+  let cart_item = getElement(".cart-item")[0];
+  let cart_rows = cart_item.getElement(".cart-row");
+  let total = 0;
+  for (let i = 0; i < cart_rows.length; i++) {
+    let cart_row = cart_rows[i];
+    let price_item = cart_row.getElement(".cart-quantity-input")[0];
+    let price = parseFloat(price_item.innerText);
+    let quantity = quantity_item.value;
+    total = total + price * quantity;
+  }
+  getElement(".cart-total-price")[0].innerText = total + "VNĐ";
+}
+
 // Hàm xóa sản phẩm khỏi giỏ hàng
 function removeItem(itemId) {
   carts = carts.filter((value) => {
     return value.id !== itemId;
   });
+  updateCart();
   displayCart(carts);
 }
 
@@ -95,9 +112,9 @@ function displayCart(products) {
     return (
       result +
       `
-        <tr>
+        <tr class="cart-row">
             <td><img src="${product.img}" width="90px" height="90px" /></td>
-            <td>${product.name}</td>
+            <td class="cart-item">${product.name}</td>
              <td width="100px">
               <div class="quantity d-flex">
                 <button 
@@ -108,7 +125,7 @@ function displayCart(products) {
                   <i class="fa-solid fa-minus"></i>
                    </button>
                    <input 
-                    class="w-50 text-center"
+                    class="w-50 text-center cart-quantity-input"
                     type="text" 
                     name="quantity" 
                     id="quantityInput"
@@ -124,8 +141,8 @@ function displayCart(products) {
                   </button>
               </div>
              </td>
-             <td>${product.price} $</td>
-             <td><button class="btn btn-close" onclick="removeItem('${product.id}')"></button></td>
+             <td class="cart-price">${product.price} $</td>
+             <td><button class="btn btn-close btn-removecart" onclick="removeItem('${product.id}')"></button></td>
          </tr>
         
       `
@@ -133,7 +150,18 @@ function displayCart(products) {
   }, "");
 
   getElement("#cartList").innerHTML = html;
-  getElement("#total").innerHTML = `<h3>Tổng: 123 </h3>`;
+  getElement("#total").innerHTML = `<h3>
+  <strong 
+  class="cart-total-title"
+  >
+  Tổng Cộng:
+  </strong>
+  <span 
+  class="cart-total-price"
+  >
+  3223000VNĐ
+  </span>
+  </h3>`;
 }
 
 // ======= Utils =======
