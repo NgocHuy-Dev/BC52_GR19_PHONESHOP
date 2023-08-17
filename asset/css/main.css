@@ -130,6 +130,23 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+#home {
+  background-color: #9288F8;
+  height: 100vh;
+}
+#home .home-content {
+  padding-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home .home-content .home-item {
+  width: 40%;
+}
+#home .home-content .home-item img {
+  border-radius: 50%;
+}
+
 #header {
   background-color: #322653;
   position: fixed;
