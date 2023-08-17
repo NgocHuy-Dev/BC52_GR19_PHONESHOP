@@ -15,30 +15,24 @@ function getProducts() {
 // Hàm thêm sản phẩm
 function createProduct() {
   // DOM và khởi tạo object product
-  const product = {
-    id: getElement("#id").value,
-    name: getElement("#namePhone").value,
-    price: getElement("#price").value,
-    screen: getElement("#screen").value,
-    backCamera: getElement("#backCamera").value,
-    frontCamera: getElement("#frontCamera").value,
-    img: getElement("#img").value,
-    desc: getElement("#desc").value,
-    type: getElement("#type").value,
-  };
+
+  let product = validate();
+  if (!product) {
+  return;
+  }
 
   // Gọi API thêm sản phẩm
   apiCreateProduct(product)
-    .then((response) => {
-      return apiGetProducts();
-    })
-    .then((response) => {
-      display(response.data);
-      $("#addPhoneModal").modal("hide");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+     .then(() => {
+        return apiGetProducts();
+     })
+     .then((response) => {
+        display(response.data);
+        $("#addPhoneModal").modal("hide");
+     })
+     .catch((error) => {
+        console.log(error);
+     });
 }
 
 // Hàm xóa sản phẩm
@@ -89,30 +83,21 @@ function selectProduct(productId) {
 // Hàm cập nhật sản phẩm
 function updateProduct(productId) {
   // DOM và khởi tạo object new product
-  let newProduct = {
-    id: getElement("#id").value,
-    name: getElement("#namePhone").value,
-    price: getElement("#price").value,
-    screen: getElement("#screen").value,
-    backCamera: getElement("#backCamera").value,
-    frontCamera: getElement("#frontCamera").value,
-    img: getElement("#img").value,
-    desc: getElement("#desc").value,
-    type: getElement("#type").value,
-  };
+  const newProduct = validate();
+  if (!newProduct) return;
 
   apiUpdateProduct(productId, newProduct)
-    .then(() => {
-      // Cập nhật thành công
-      return apiGetProducts();
-    })
-    .then((response) => {
-      display(response.data);
-      $("#addPhoneModal").modal("hide");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+     .then(() => {
+        // Cập nhật thành công
+        return apiGetProducts();
+     })
+     .then((response) => {
+        display(response.data);
+        $("#addPhoneModal").modal("hide");
+     })
+     .catch((error) => {
+        console.log(error);
+     });
 }
 
 // Hàm hiển thị data ra giao diện
@@ -137,7 +122,7 @@ function display(products) {
               
               <td><strong>${product.name}</strong></td>
               <td>${product.id}</td>
-              <td>${product.price} $</td>
+              <td>${product.price.toLocaleString("en-US", {style:"currency", currency:"VND"})}</td>
               <td>
                 <img src="${product.img}" alt="" width="100" height="100" />
               </td>
@@ -178,6 +163,21 @@ getElement("#btnAddPhone").onclick = () => {
 
   `;
 };
+ //Search
+getElement("#txtSearch").onkeypress = (event) => {
+  if(event.key !== "Enter"){
+    return;
+  }
+
+  apiGetProducts(event.target.value)
+  .then((response) => {
+    display(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+};
+
 // ======= Utils =======
 function getElement(selector) {
   return document.querySelector(selector);
@@ -235,3 +235,170 @@ getElement("#sortDown").onclick = function () {
       console.log(error);
     });
 };
+
+//VALIDATE
+//Ham kiem tra chuoi rong
+function isRequired(value) {
+  if (!value.trim()) {
+     //chuoi rong
+     return false;
+  }
+  return true;
+}
+
+//Hàm kiểm tra ID
+function isId(value) {
+  if(isNaN(value)){
+    return false
+  }
+  if(value <0 || value > 999) {
+    return false
+  }
+  return true
+}
+
+//Hàm kiểm tra tiền
+function isPrice(value) {
+  if(isNaN(value)){
+    return false
+  }
+  if(value <0 || value > 999999999) {
+    return false
+  }
+  return true
+}
+
+//Hàm kiểm tra IMG
+function isUrl(value) {
+  let regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/ ;
+  return regex.test(value)
+}
+//Ham Validate -> Dom -> khởi tạo object
+function validate() {
+  let isValid = true;
+  const product = {
+     id: getElement("#id").value,
+     name: getElement("#namePhone").value,
+     price: getElement("#price").value,
+     screen: getElement("#screen").value,
+     backCamera: getElement("#backCamera").value,
+     frontCamera: getElement("#frontCamera").value,
+     img: getElement("#img").value,
+     desc: getElement("#desc").value,
+     type: getElement("#type").value,
+  };
+
+  //ID
+  if (!isRequired(product.id)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkID").innerHTML = "ID không được để trống";
+  } else if (!isId(+product.id)){
+    isValid = false;
+    getElement("#checkID").innerHTML = "ID Phải la số";
+  }
+  else {
+     getElement("#checkID").innerHTML = "";
+  }
+  //name
+  if (!isRequired(product.name)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkName").innerHTML = "Name không được để trống";
+  } else {
+     getElement("#checkName").innerHTML = "";
+  }
+  //Price
+  if (!isRequired(product.price)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkPrice").innerHTML = "Price không được để trống";
+  } else if (!isPrice(+product.price)) {
+    isValid = false;
+    getElement("#checkPrice").innerHTML = "Giá tiền không hợp lệ"
+  } 
+  else {
+     getElement("#checkPrice").innerHTML = "";
+  }
+  //Screen
+  if (!isRequired(product.screen)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkScreen").innerHTML = "Screen không được để trống";
+  } else {
+     getElement("#checkScreen").innerHTML = "";
+  }
+  //Back Camera
+  if (!isRequired(product.backCamera)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkBCamera").innerHTML = "Back Camera không được để trống";
+  } else {
+     getElement("#checkBCamera").innerHTML = "";
+  }
+  //fontCamera
+  if (!isRequired(product.frontCamera)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkFCamera").innerHTML = "Font Camera không được để trống";
+  } else {
+     getElement("#checkFCamera").innerHTML = "";
+  }
+  //img
+  if (!isRequired(product.img)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkIMG").innerHTML = "Photo không được để trống";
+  } else if (!isUrl(product.img)) {
+    isValid = false;
+    getElement("#checkIMG").innerHTML = "Url không hợp lệ";
+  }else {
+     getElement("#checkIMG").innerHTML = "";
+  }
+
+  //description
+  if (!isRequired(product.desc)) {
+     //khong hop le
+    isValid = false;
+     getElement("#checkDesc").innerHTML = "Mô tả không được để trống";
+    } else {
+     getElement("#checkDesc").innerHTML = "";
+    }
+  //type
+  if (!isRequired(product.type)) {
+     //khong hop le
+     isValid = false;
+     getElement("#checkType").innerHTML = "Brand không được để trống";
+  } else {
+     getElement("#checkType").innerHTML = "";
+  }
+
+  if (!isValid) {
+     return;
+  }
+
+  return { ...product, price: product.price * 1 };
+}
+//Resetform
+function resetForm() {
+  getElement("#id").value = "";
+  getElement("#namePhone").value = "";
+  getElement("#price").value = "";
+  getElement("#screen").value = "";
+  getElement("#backCamera").value = "";
+  getElement("#frontCamera").value = "";
+  getElement("#img").value = "";
+  getElement("#desc").value = "";
+  getElement("#type").value = "";
+
+  getElement("#checkID").innerHTML = "";
+  getElement("#checkName").innerHTML = "";
+  getElement("#checkPrice").innerHTML = "";
+  getElement("#checkScreen").innerHTML = "";
+  getElement("#checkBCamera").innerHTML = "";
+  getElement("#checkFCamera").innerHTML = "";
+  getElement("#checkIMG").innerHTML = "";
+  getElement("#checkDesc").innerHTML = "";
+  getElement("#checkType").innerHTML = "";
+}
+
