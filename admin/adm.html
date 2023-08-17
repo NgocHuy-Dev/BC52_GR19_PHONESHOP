@@ -34,13 +34,13 @@
     <!-- ======= header =========  -->
     <header id="header">
       <nav class="container navbar navbar-expand">
-        <a href="#" class="navbar-brand">PHONE SỐP</a>
+        <a href="../index.html" class="navbar-brand">PHONE SỐP</a>
         <button class="navbar-toggler" type="button"></button>
 
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="./adm.html">Home</a>
             </li>
 
             <li class="nav-item">
@@ -159,6 +159,23 @@
           class="infor_header d-flex justify-content-between mb-2 py-3 px-2 rounded-4"
         >
           <h3 class="text-danger">Phone Management</h3>
+          <div class="col-md-4 h-100">
+            <!-- Search -->
+          <div class="input-group mb-3 h-100">
+            <input type="text" 
+            id="txtSearch" 
+            class="form-control h-100" 
+            placeholder="Tìm theo tên sản phẩm"
+            aria-label="Required"
+            aria-describedby="basic-addon2"
+            >
+            <div class="input-group-append">
+              <span class="input-group-text h-100" id="CheckSearch"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
+          <!-- /Search -->
+          </div>
+          
           <button
             type="button"
             id="btnAddPhone"
@@ -227,6 +244,7 @@
                       </i> ID</label
                     >
                     <input type="text" class="form-control" id="id" />
+                    <span id="checkID" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="PhoneName" class="col-form-label">
@@ -234,48 +252,56 @@
                       Name</label
                     >
                     <input type="text" class="form-control" id="namePhone" />
+                    <span id="checkName" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label>
                       <i class="fa-solid fa-money-bill-wave"></i> Price</label
                     >
                     <input type="text" class="form-control" id="price" />
+                    <span id="checkPrice" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="PhoneScreen" class="col-form-label">
                       <i class="fa-solid fa-display"></i> Screen</label
                     >
                     <input type="text" class="form-control" id="screen" />
+                    <span id="checkScreen" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="BackCamera" class="col-form-label">
                       <i class="fa-solid fa-camera"></i> Back Camera</label
                     >
                     <input type="text" class="form-control" id="backCamera" />
+                    <span id="checkBCamera" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="FontCamera" class="col-form-label">
                       <i class="fa-solid fa-camera"></i> Font Camera</label
                     >
                     <input type="text" class="form-control" id="frontCamera" />
+                    <span id="checkFCamera" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="PhonePhoto" class="col-form-label">
                       <i class="fa-solid fa-image"></i> Photo</label
                     >
                     <input type="text" class="form-control" id="img" />
+                    <span id="checkIMG" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="PhoneDesc" class="col-form-label">
                       <i class="fa-solid fa-tags"></i> Description</label
                     >
                     <input type="text" class="form-control" id="desc" />
+                    <span id="checkDesc" class="text-danger"></span>
                   </div>
                   <div class="form-group">
                     <label for="PhoneBrand" class="col-form-label">
                       <i class="fa-solid fa-hashtag"></i> Brand</label
                     >
                     <input type="text" class="form-control" id="type" />
+                    <span id="checkType" class="text-danger"></span>
                   </div>
                 </div>
                 <div class="modal-footer">

@@ -44,6 +44,7 @@ function selectItem(productId) {
           }
           return items;
         });
+
         displayCart(newCarts);
         console.log("newCart", newCarts);
         // console.log(newCarts);
@@ -51,6 +52,7 @@ function selectItem(productId) {
         // chưa có sản phẩm trong giỏ hàng thì thêm vào giỏ và thêm thuộc tính quantity :1  cho sp
         console.log("chưa có");
         carts.push({ ...item, quantity: 1 });
+        mainCarts.push({ ...item, quantity: 1 });
         displayCart(carts);
         console.log("cart", carts);
       }
@@ -141,17 +143,14 @@ function getElement(selector) {
 
 // tăng giảm số lượng sản phẩm trong giỏ hàng
 
-let quantity = getElement("#quantityInput").value;
+// let quantity = getElement("#quantityInput").value;
 
-let handlePlus = () => {
-  quantity++;
-  getElement("#quantityInput").value = quantity;
-};
+// let handlePlus = () => {
+//   quantity++;
+//   getElement("#quantityInput").value = quantity;
+// };
 
 let handleMinus = () => {
   if (quantity > 1) quantity--;
   getElement("#quantityInput").value = quantity;
 };
-
-// tính tổng
-function tital() {}
