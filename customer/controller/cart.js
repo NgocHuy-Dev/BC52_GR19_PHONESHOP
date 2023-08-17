@@ -134,7 +134,7 @@ function displayCart(products) {
   }, "");
 
   getElement("#cartList").innerHTML = html;
-  getElement("#total").innerHTML = `<h3>Tổng: 123 </h3>`;
+  getElement("#total").innerHTML = `<h3>Tổng: </h3>`;
 }
 
 // ======= Utils =======
