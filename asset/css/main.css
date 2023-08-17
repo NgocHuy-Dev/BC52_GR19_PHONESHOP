@@ -135,13 +135,13 @@ body {
   height: 100vh;
 }
 #home .home-content {
-  padding-top: 150px;
+  padding-top: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #home .home-content .home-item {
-  width: 40%;
+  padding: 20px;
 }
 #home .home-content .home-item img {
   border-radius: 50%;

@@ -2,12 +2,12 @@
     background-color: $color-purple-2;
     height: 100vh;
     .home-content{
-        padding-top: 150px;
+        padding-top: 130px;
         display: flex;
         justify-content: center;
         align-items: center;
         .home-item {
-            width: 40%;
+            padding: 20px;
             img {
                 border-radius: 50%;
             }
