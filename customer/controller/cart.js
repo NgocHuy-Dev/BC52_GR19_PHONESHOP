@@ -1,5 +1,5 @@
-let carts = [];
-let newCarts = [];
+let mainCarts = [];
+console.log("ở ngoài", mainCarts);
 init();
 function init() {
   carts = JSON.parse(localStorage.getItem("newCarts")) || [];
@@ -19,7 +19,7 @@ function init() {
   });
   displayCart(carts);
 }
-console.log(newCarts);
+
 getElement("#cartList").innerHTML = `
 <h2 class="text-center">Chưa có sản phẩm nào đc chọn<h2/>
 `;
@@ -39,25 +39,28 @@ function selectItem(productId) {
         // có sản phẩm trong giỏi hàng thì tang giá trị quantity lên 1 đơn vị
         const newCarts = carts.map((items) => {
           if (item.id === productId) {
-            return { ...items, quantity: items.quantity++ };
+            console.log("có rồi");
+            return { ...items, quantity: (items.quantity += 1) };
           }
           return items;
         });
         localStorage.setItem("newCart", JSON.stringify(newCarts));
-        displayCart(newCarts);
+        mainCarts = displayCart(newCarts);
+        console.log("newCart", newCarts);
         // console.log(newCarts);
       } else {
         // chưa có sản phẩm trong giỏ hàng thì thêm vào giỏ và thêm thuộc tính quantity :1  cho sp
-        console.log("false");
+        console.log("chưa có");
         carts.push({ ...item, quantity: 1 });
+        mainCarts.push({ ...item, quantity: 1 });
         displayCart(carts);
+        console.log("cart", carts);
       }
     })
     .catch((error) => {
       console.log(error);
     });
 }
-
 // Hàm xóa sản phẩm khỏi giỏ hàng
 function removeItem(itemId) {
   carts = carts.filter((value) => {
@@ -130,7 +133,7 @@ function displayCart(products) {
   }, "");
 
   getElement("#cartList").innerHTML = html;
-  getElement("#total").innerHTML = `<h3>Tổng: 1234 $</h3>`;
+  getElement("#total").innerHTML = `<h3>Tổng: 123 </h3>`;
 }
 
 // ======= Utils =======
@@ -140,17 +143,17 @@ function getElement(selector) {
 
 // tăng giảm số lượng sản phẩm trong giỏ hàng
 
-let quantity = getElement("#quantityInput").value;
+// let quantity = getElement("#quantityInput").value;
 
-let handlePlus = () => {
-  quantity++;
-  getElement("#quantityInput").value = quantity;
-};
+// let handlePlus = () => {
+//   quantity++;
+//   getElement("#quantityInput").value = quantity;
+// };
 
-let handleMinus = () => {
-  if (quantity > 1) quantity--;
-  getElement("#quantityInput").value = quantity;
-};
+// let handleMinus = () => {
+//   if (quantity > 1) quantity--;
+//   getElement("#quantityInput").value = quantity;
+// };
 
 // tính tổng
 function tital() {}
