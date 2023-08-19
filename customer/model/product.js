@@ -7,7 +7,8 @@ function Product(
   frontCamera,
   img,
   desc,
-  type
+  type,
+  quantity
 ) {
   this.id = id;
   this.name = name;
@@ -18,4 +19,5 @@ function Product(
   this.img = img;
   this.desc = desc;
   this.type = type;
+  this.quantity = quantity;
 }
