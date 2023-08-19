@@ -1,14 +1,13 @@
 // tạo biến global cho giỏ h
 var carts = [];
-
-console.log("carts global", carts);
-
 window.onload = function () {
   loadStorage();
 };
 // Hiển thị dữ liệu từ local Storage
 function loadStorage() {
+  // check xem có dữ liệu trọng storage ko
   if (localStorage.getItem("cartStorage")) {
+    // lấy ra dữ liệu và chuyển về mảng lại
     carts = JSON.parse(localStorage.getItem("cartStorage"));
     displayCart(carts);
   }
@@ -56,16 +55,10 @@ function selectItem(productId) {
         localStorage.setItem("cartStorage", JSON.stringify(carts));
         console.log("cart", carts);
       }
-      changeQuantity(productId);
     })
     .catch((error) => {
       console.log(error);
     });
-}
-
-function changeQuantity(event) {
-  let quantity = event.target.value;
-  let price = event.target.parentElement.nextElement;
 }
 
 // Hàm xóa sản phẩm khỏi giỏ hàng
@@ -113,7 +106,7 @@ function displayCart(products) {
                 <button 
                   id="btn-countDown"
                   class="btn-quantity"
-                  
+                  onclick="handleMinus('${product.id}')"
                   >
                   <i class="fa-solid fa-minus"></i>
                    </button>
@@ -128,14 +121,19 @@ function displayCart(products) {
                     <button
                       id="btn-countUp"
                       class="btn-quantity"
-                      
+                      onclick="handlePlus('${product.id}')"
                       >
                   <i class="fa-solid fa-plus"></i>
                   </button>
               </div>
              </td>
-             <td class="cart-price">${product.price} $</td>
-             <td><button class="btn btn-close btn-removecart" onclick="removeItem('${product.id}')"></button></td>
+             <td class="cart-price">${product.price.toLocaleString("en-US", {
+               style: "currency",
+               currency: "VND",
+             })}</td>
+             <td><button class="btn btn-close btn-removecart" onclick="removeItem('${
+               product.id
+             }')"></button></td>
          </tr>
         
       `
@@ -150,27 +148,23 @@ function getElement(selector) {
   return document.querySelector(selector);
 }
 
-// tăng giảm số lượng sản phẩm trong giỏ hàng
-
-let quantity = getElement("#quantityInput").value;
-
-let handlePlus = () => {
-  quantity++;
-  getElement("#quantityInput").value = quantity;
+let handlePlus = (productId) => {
+  let index = carts.findIndex((value) => {
+    return value.id === productId;
+  });
+  carts[index].quantity++;
+  displayCart(carts);
 };
 
-let handleMinus = () => {
-  if (quantity > 1) quantity--;
-  getElement("#quantityInput").value = quantity;
-};
-
-// duyệt mảng giỏ hàng truyền vào id
-function changeQuantity(Id) {
-  for (let i = 0; i < carts.length; i++) {
-    if (carts[i].id === Id) {
-      getElement("#btn-countUp").onclick = () => {
-        carts[i].quantity += 1;
-      };
-    }
+let handleMinus = (productId) => {
+  let index = carts.findIndex((value) => {
+    return value.id === productId;
+  });
+  // nếu số lượng nhỏ hơn 1 thì xóa khỏi giỏ hàng
+  if (carts[index].quantity < 1) {
+    removeItem(productId);
+  } else {
+    carts[index].quantity--;
+    displayCart(carts);
   }
-}
+};
