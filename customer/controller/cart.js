@@ -1,5 +1,6 @@
 // tạo biến global cho giỏ h
 var carts = [];
+
 window.onload = function () {
   loadStorage();
 };
@@ -12,8 +13,6 @@ function loadStorage() {
     displayCart(carts);
   }
 }
-// chưa ổn ?????????????????????????????
-// thêm sản phẩn thì chưa cập nhật được số lượng bị reset giỏ hàng mới
 
 getElement("#cartList").innerHTML = `
 <h2 class="text-center">Chưa có sản phẩm nào đc chọn<h2/>
@@ -37,15 +36,13 @@ function selectItem(productId) {
           }
           return item;
         });
+        carts = cartItem;
         // hiển thị ra giỏ  hàng
         displayCart(carts);
         // lưu mảng vào LocalStorage
         localStorage.setItem("cartStorage", JSON.stringify(carts));
-        console.log(" tồn tại");
-        console.log("mảng mới", carts);
       } else {
         // chưa có sản phẩm trong giỏ hàng thì thêm vào giỏ và thêm thuộc tính quantity :1  cho sp
-        console.log("chưa có");
 
         cartItem.push({ ...item, quantity: 1 });
         carts.push(...cartItem);
@@ -53,7 +50,6 @@ function selectItem(productId) {
         displayCart(carts);
         // lưu mảng vào LocalStorage
         localStorage.setItem("cartStorage", JSON.stringify(carts));
-        console.log("cart", carts);
       }
     })
     .catch((error) => {
@@ -92,8 +88,6 @@ function displayCart(products) {
       value.type,
       value.quantity
     );
-    console.log(value.name);
-    console.log(value.quantity);
 
     return (
       result +
@@ -141,6 +135,8 @@ function displayCart(products) {
   }, "");
 
   getElement("#cartList").innerHTML = html;
+  getElement("#total").innerHTML = `Tổng tiền: ${total}
+  `;
 }
 
 // ======= Utils =======
@@ -148,6 +144,7 @@ function getElement(selector) {
   return document.querySelector(selector);
 }
 
+// tăng giá trị quantity khi nhấn nút
 let handlePlus = (productId) => {
   let index = carts.findIndex((value) => {
     return value.id === productId;
@@ -156,15 +153,23 @@ let handlePlus = (productId) => {
   displayCart(carts);
 };
 
+// giảm giá trị quantity khi nhấn nút
 let handleMinus = (productId) => {
   let index = carts.findIndex((value) => {
     return value.id === productId;
   });
-  // nếu số lượng nhỏ hơn 1 thì xóa khỏi giỏ hàng
-  if (carts[index].quantity < 1) {
-    removeItem(productId);
-  } else {
+
+  if (carts[index].quantity > 1) {
     carts[index].quantity--;
     displayCart(carts);
+  } else {
+    // nếu số lượng nhỏ hơn 1 thì xóa khỏi giỏ hàng
+    removeItem(productId);
   }
 };
+
+// tính tổng
+let total = 0;
+for (let i = 0; i < carts.length; i++) {
+  total += carts[i].price * carts[i].quantity;
+}

@@ -108,5 +108,3 @@ function addToCart() {
     let product = response.data;
   });
 }
-
-// CÁC CHỨC NĂNG CHO GIỎ HÀNG
