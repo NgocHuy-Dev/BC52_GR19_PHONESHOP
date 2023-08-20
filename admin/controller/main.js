@@ -11,11 +11,11 @@ function getProducts() {
       console.log(error);
     });
 }
-
+let isSubmitted = false;
 // Hàm thêm sản phẩm
 function createProduct() {
   // DOM và khởi tạo object product
-
+  isSubmitted = true;
   let product = validate();
   if (!product) {
     return;
@@ -83,6 +83,7 @@ function selectProduct(productId) {
 
 // Hàm cập nhật sản phẩm
 function updateProduct(productId) {
+  isSubmitted = true;
   // DOM và khởi tạo object new product
   const newProduct = validate();
   if (!newProduct) return;
@@ -425,6 +426,7 @@ function validate() {
 }
 //Resetform
 function resetForm() {
+  isSubmitted = true;
   getElement("#id").value = "";
   getElement("#namePhone").value = "";
   getElement("#price").value = "";
@@ -445,3 +447,94 @@ function resetForm() {
   getElement("#checkDesc").innerHTML = "";
   getElement("#checkType").innerHTML = "";
 }
+
+// bắt sự kiện xóa lỗi hiện hữu
+getElement("#id").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkID");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "ID không được để trống";
+  }
+};
+
+getElement("#namePhone").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkName");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Name không được để trống";
+  }
+};
+
+getElement("#price").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkPrice");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Price không được để trống";
+  }
+};
+
+getElement("#screen").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkScreen");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Screen không được để trống";
+  }
+};
+
+getElement("#backCamera").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkBCamera");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Backcamera không được để trống";
+  }
+};
+
+getElement("#frontCamera").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkFCamera");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Frontcamera không được để trống";
+  }
+};
+
+getElement("#img").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkIMG");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Photo không được để trống";
+  }
+};
+
+getElement("#desc").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkDesc");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Description không được để trống";
+  }
+};
+
+getElement("#type").oninput = (event) => {
+  if (!isSubmitted) return;
+  let idSpan = getElement("#checkType");
+  if (isRequired(event.target.value)) {
+    idSpan.innerHTML = "";
+  } else {
+    idSpan.innerHTML = "Brand không được để trống";
+  }
+};
