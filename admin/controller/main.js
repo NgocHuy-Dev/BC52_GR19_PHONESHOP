@@ -265,36 +265,21 @@ function isId(value) {
 // Hàm kiểm tra trùng lặp ID
 function duplicateID(value) {
   apiGetProducts()
-  .then((response) => {
-    let listPhone = response.data;
-    for (let i = 0; i < listPhone.length; i++) {
-      if ((listPhone[i].id = value)) {
-        return false;
+    .then((response) => {
+      let listPhone = response.data;
+      for (let i = 0; i < listPhone.length; i++) {
+        if ((listPhone[i].id = value)) {
+          return false;
+        }
+        return true;
       }
-      return true;
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 // Hàm kiểm tra trùng lặp tên
-function duplicateName(value) {
-  apiGetProducts()
-  .then((response) => {
-    let listPhone = response.data;
-    for (let i = 0; i < listPhone.length; i++) {
-      if ((listPhone[i].name.toLowerCase() = value)) {
-        return false;
-      }
-      return true;
-    }
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}
 
 //Hàm kiểm tra tiền
 function isPrice(value) {
@@ -347,11 +332,7 @@ function validate() {
     //khong hop le
     isValid = false;
     getElement("#checkName").innerHTML = "Name không được để trống";
-  } else if (!duplicateName(product.name.toLowerCase())) {
-    isValid = false;
-    getElement("#checkName").innerHTML = "Name đã tồn tại";
-  } 
-  else {
+  } else {
     getElement("#checkName").innerHTML = "";
   }
   //Price
