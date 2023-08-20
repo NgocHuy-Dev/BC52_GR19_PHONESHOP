@@ -123,7 +123,7 @@ function display(products) {
               
               <td><strong>${product.name}</strong></td>
               <td>${product.id}</td>
-              <td>${product.price.toLocaleString("en-US", {
+              <td>${product.price.toLocaleString("it-IT", {
                 style: "currency",
                 currency: "VND",
               })}</td>
