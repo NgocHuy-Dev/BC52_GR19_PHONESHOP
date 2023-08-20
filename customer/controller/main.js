@@ -37,7 +37,10 @@ function display(products) {
           
           <div class="card-body">
             <h5 class="text-center">${product.name}</h5>
-            <h4>Giá: ${product.price} VNĐ</h4>
+            <h4>Giá: ${product.price.toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}</h4>
             <p class="card-text">${product.desc}</p>
           </div>
           
@@ -49,7 +52,9 @@ function display(products) {
                 <h5>Camera sau: <span>${product.backCamera}</span></h5>
                 
                   
-                  <a href="#" class="btn btn-primary" onclick="selectItem('${product.id}')">Thêm vào giỏ hàng</a>
+                  <a href="#" class="btn btn-primary" onclick="selectItem('${
+                    product.id
+                  }')">Thêm vào giỏ hàng</a>
                 </div>
                 
               </div>

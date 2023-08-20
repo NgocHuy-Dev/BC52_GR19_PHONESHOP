@@ -27,6 +27,7 @@ function selectItem(productId) {
       const found = carts.find((items) => items.id === productId);
 
       let cartItem = [];
+
       if (found) {
         // có sản phẩm trong giỏi hàng thì tang giá trị quantity lên 1 đơn vị
         cartItem = carts.map((item) => {
@@ -121,7 +122,7 @@ function displayCart(products) {
                   </button>
               </div>
              </td>
-             <td class="cart-price">${product.price.toLocaleString("en-US", {
+             <td class="cart-price">${product.price.toLocaleString("it-IT", {
                style: "currency",
                currency: "VND",
              })}</td>
@@ -135,8 +136,14 @@ function displayCart(products) {
   }, "");
 
   getElement("#cartList").innerHTML = html;
-  getElement("#total").innerHTML = `Tổng tiền: ${total}
-  `;
+  getElement(
+    "#total"
+  ).innerHTML = `<div class="text-danger mt-2"><h3>Tổng: ${totalPrice(
+    carts
+  ).toLocaleString("it-IT", {
+    style: "currency",
+    currency: "VND",
+  })}</h3></div>`;
 }
 
 // ======= Utils =======
@@ -168,8 +175,10 @@ let handleMinus = (productId) => {
   }
 };
 
-// tính tổng
-let total = 0;
-for (let i = 0; i < carts.length; i++) {
-  total += carts[i].price * carts[i].quantity;
+function totalPrice(carts) {
+  let total = 0;
+  for (let i = 0; i < carts.length; i++) {
+    total += carts[i].price * carts[i].quantity;
+  }
+  return total;
 }
