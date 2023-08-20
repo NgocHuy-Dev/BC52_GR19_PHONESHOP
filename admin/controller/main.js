@@ -261,6 +261,40 @@ function isId(value) {
   return true;
 }
 
+// Hàm kiểm tra trùng lặp ID
+function duplicateID(value) {
+  apiGetProducts()
+  .then((response) => {
+    let listPhone = response.data;
+    for (let i = 0; i < listPhone.length; i++) {
+      if ((listPhone[i].id = value)) {
+        return false;
+      }
+      return true;
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+
+// Hàm kiểm tra trùng lặp tên
+function duplicateName(value) {
+  apiGetProducts()
+  .then((response) => {
+    let listPhone = response.data;
+    for (let i = 0; i < listPhone.length; i++) {
+      if ((listPhone[i].name.toLowerCase() = value)) {
+        return false;
+      }
+      return true;
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
+
 //Hàm kiểm tra tiền
 function isPrice(value) {
   if (isNaN(value)) {
@@ -301,6 +335,9 @@ function validate() {
   } else if (!isId(+product.id)) {
     isValid = false;
     getElement("#checkID").innerHTML = "ID Phải la số";
+  } else if (!duplicateID(product.id)) {
+    isValid = false;
+    getElement("#checkID").innerHTML = "Đã tồn tại ID";
   } else {
     getElement("#checkID").innerHTML = "";
   }
@@ -309,7 +346,11 @@ function validate() {
     //khong hop le
     isValid = false;
     getElement("#checkName").innerHTML = "Name không được để trống";
-  } else {
+  } else if (!duplicateName(product.name.toLowerCase())) {
+    isValid = false;
+    getElement("#checkName").innerHTML = "Name đã tồn tại";
+  } 
+  else {
     getElement("#checkName").innerHTML = "";
   }
   //Price
