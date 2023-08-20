@@ -126,7 +126,9 @@ function displayCart(products) {
                   </button>
               </div>
              </td>
-             <td class="cart-price">${product.price.toLocaleString("it-IT", {
+             <td class="cart-price">${(
+               product.price * product.quantity
+             ).toLocaleString("it-IT", {
                style: "currency",
                currency: "VND",
              })}</td>
