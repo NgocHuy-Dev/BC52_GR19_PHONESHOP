@@ -1,4 +1,4 @@
-// tạo biến global cho giỏ h
+// tạo biến global cho giỏ hàng
 var carts = [];
 
 window.onload = function () {
@@ -15,7 +15,7 @@ function loadStorage() {
 }
 
 getElement("#cartList").innerHTML = `
-<h2 class="text-center">Chưa có sản phẩm nào đc chọn<h2/>
+<h3 class="text-center">Chưa có sản phẩm nào đc chọn<h3/>
 `;
 
 // Hàm chọn sản phẩm thêm vào giỏ hàng
@@ -25,14 +25,11 @@ function selectItem(productId) {
       let item = response.data;
       // kiểm tra xem sp đã có trong giỏ hàng hay chưa
       const found = carts.find((items) => items.id === productId);
-
       let cartItem = [];
-
       if (found) {
         // có sản phẩm trong giỏi hàng thì tang giá trị quantity lên 1 đơn vị
         cartItem = carts.map((item) => {
           if (item.id === productId) {
-            console.log("có rồi");
             return { ...item, quantity: (item.quantity += 1) };
           }
           return item;
@@ -71,6 +68,13 @@ function removeItem(itemId) {
 // Hàm reset giỏ hàng
 function resetCart() {
   getElement("#cartList").innerHTML = "Giỏ hàng trống";
+  getElement("#total").innerHTML = ``;
+  localStorage.clear();
+}
+
+function payment() {
+  getElement("#cartList").innerHTML =
+    "Thanh toán thành công!! Lần sau ủng hộ sốp tiếp nha <3";
   getElement("#total").innerHTML = ``;
   localStorage.clear();
 }
