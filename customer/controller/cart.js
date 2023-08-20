@@ -164,6 +164,8 @@ let handlePlus = (productId) => {
   });
   carts[index].quantity++;
   displayCart(carts);
+  // Lưu lại storage
+  localStorage.setItem("cartStorage", JSON.stringify(carts));
 };
 
 // giảm giá trị quantity khi nhấn nút
@@ -175,9 +177,13 @@ let handleMinus = (productId) => {
   if (carts[index].quantity > 1) {
     carts[index].quantity--;
     displayCart(carts);
+    // Lưu lại storage
+    localStorage.setItem("cartStorage", JSON.stringify(carts));
   } else {
     // nếu số lượng nhỏ hơn 1 thì xóa khỏi giỏ hàng
     removeItem(productId);
+    // Lưu lại storage
+    localStorage.setItem("cartStorage", JSON.stringify(carts));
   }
 };
 
